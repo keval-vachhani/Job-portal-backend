@@ -12,7 +12,7 @@ const server = express();
 
 const _dirname = path.resolve();
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: "https://localhost:5173",//http://localhost:8080/
   credentials: true,
 };
 //middle wares
