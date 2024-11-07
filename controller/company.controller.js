@@ -1,7 +1,7 @@
 const Company = require("../models/company.model");
 const mongoose = require("mongoose");
-const getDataUri = require("../utils/datauri.js");
-const cloudinary = require("../utils/cloudinary.js");
+const getDataUri = require("../utils/dataUri");
+const cloudinary = require("../utils/CLOUDINARY.JS");
 const registerCompany = async (req, res) => {
   try {
     const { companyName } = req.body;
@@ -87,13 +87,12 @@ const getCompanyById = async (req, res) => {
 const updateCompany = async (req, res) => {
   try {
     const { name, description, website, location } = req.body;
-    const file=req.file;
+    const file = req.file;
     const fileUri = getDataUri(file);
     const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
-    const logo=cloudResponse.secure_url;
+    const logo = cloudResponse.secure_url;
 
-
-    const updateData = { name, description, website, location,logo };
+    const updateData = { name, description, website, location, logo };
     const company = await Company.findByIdAndUpdate(req.params.id, updateData, {
       new: true,
     });
