@@ -12,7 +12,7 @@ const server = express();
 
 const _dirname = path.resolve();
 const corsOptions = {
-  origin: "https://localhost:5173",//http://localhost:8080/
+  origin: "http://localhost:5173", //http://localhost:8080/
   credentials: true,
 };
 //middle wares
@@ -29,7 +29,9 @@ server.use("/api/v1/application", applicationRouter);
 server.use("/api/v1/job", jobRouter);
 server.use("/api/v1/company", companyRouter);
 server.use("/api/v1/user", userRouter);
-
+server.get("/test", (req, res) => {
+  res.status(200).json("test route shown correctly");
+});
 // server.use(express.static(path.join(_dirname, "frontend/dist")));
 // server.get("*", (_, res) => {
 //   res.sendFile(path.resolve(_dirname, "frontend", "dist", "index.html"));
