@@ -12,12 +12,14 @@ const server = express();
 
 const _dirname = path.resolve();
 const corsOptions = {
-  origin: ["http://localhost:5173", "https://jobfusion.netlify.app/"],
-  credentials: true,
+  origin: ["http://localhost:5173", "https://jobfusion.netlify.app"], // Allowed origins
+  credentials: true, // Allow credentials (cookies, headers, etc.)
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allow specific HTTP methods
+  allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"], // Specify allowed headers
 };
 //middle wares
-dotenv.config({});
 server.use(cors(corsOptions));
+dotenv.config({});
 server.use(express.urlencoded({ extended: true }));
 server.use(cookieparser());
 server.use(express.json());
