@@ -12,7 +12,7 @@ const server = express();
 
 const _dirname = path.resolve();
 const corsOptions = {
-  origin: ["http://localhost:5173", "http://jobfusion.netlify.app/"],
+  origin: ["http://localhost:5173", "https://jobfusion.netlify.app/"],
   credentials: true,
 };
 //middle wares
